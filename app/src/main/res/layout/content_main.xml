@@ -25,49 +25,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="SERVER PORT"
+            android:text="Server"
             android:id="@+id/textView"
             android:textColor="#ffffff"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/serverPortTextView"
+            android:id="@+id/serverinfo"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/textView"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="40dp"
             android:textColor="#FFFE8D14"
             android:textAlignment="center"
             android:background="#3d3d3d"
-            android:gravity="center_vertical|clip_vertical"/>
+            android:gravity="center_vertical|clip_vertical"
+            android:layout_alignParentStart="false" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="SERVER IP"
+            android:text="Client"
             android:id="@+id/textView4"
             android:layout_below="@+id/textView"
             android:layout_alignParentStart="true"
             android:textColor="#ffffff"
             android:layout_marginTop="10dp"
-            android:layout_toStartOf="@+id/serverPortTextView" />
+            android:layout_toStartOf="@+id/serverinfo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/serverIpTextView"
+            android:id="@+id/clientinfo"
             android:layout_alignParentEnd="true"
             android:textColor="#fe8d14"
             android:gravity="center_vertical|center_horizontal"
             android:layout_alignBottom="@+id/textView4"
-            android:layout_below="@+id/serverPortTextView"
-            android:layout_alignStart="@+id/serverPortTextView"
+            android:layout_below="@+id/serverinfo"
+            android:layout_alignStart="@+id/serverinfo"
             android:background="#3d3d3d"
             android:layout_marginTop="10dp"/>
 
@@ -82,7 +83,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginBottom="-20dp" />
 
-        <TextView
+        TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/clientPortTextView"
@@ -101,13 +102,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/msgTextView"
             android:layout_alignParentStart="true"
-            android:layout_alignEnd="@+id/serverIpTextView"
+            android:layout_alignEnd="@+id/clientinfo"
             android:layout_above="@+id/imageView"
             android:background="#3a3a3a"
-            android:layout_below="@+id/clientIpTextView"
-            android:layout_marginTop="20dp" />
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="15dp" />
 
-        <TextView
+        TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CLIENT PORT"
@@ -117,7 +118,7 @@
             android:layout_alignTop="@+id/clientPortTextView"
             android:textColor="#ffffff" />
 
-        <TextView
+        TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/clientIpTextView"
@@ -130,7 +131,7 @@
             android:layout_marginTop="10dp"
             android:textColor="#b9b9b9" />
 
-        <TextView
+        TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CLIENT IP"

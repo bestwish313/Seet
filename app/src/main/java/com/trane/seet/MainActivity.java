@@ -19,10 +19,10 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
 
     // socket container
-    TextView serverport, serverip, clientport, clientip, msg;
+    TextView serverinfo, clientinfo, msg;
     String message = "";
     String clientIpStatus = "";
     String clientPortStatus = "";
@@ -42,13 +42,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
 
         // network display
-        serverip = (TextView) findViewById(R.id.serverIpTextView);
-        serverport = (TextView) findViewById(R.id.serverPortTextView);
-        clientport = (TextView) findViewById(R.id.clientPortTextView);
-        clientip = (TextView) findViewById(R.id.clientIpTextView);
+        serverinfo = (TextView) findViewById(R.id.serverinfo);
+        clientinfo = (TextView) findViewById(R.id.clientinfo);
         msg = (TextView) findViewById(R.id.msgTextView);
-
-        serverip.setText(getIpAddress());
 
         Thread socketServerThread = new Thread(new SocketServerThread());
         socketServerThread.start();
@@ -92,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class SocketServerThread extends Thread {
 
-        static final int SocketServerPORT = 9999;
+        static final int SocketServerPort = 8080;
         int count = 0;
 
         @Override
@@ -102,12 +98,13 @@ public class MainActivity extends AppCompatActivity {
             DataOutputStream dataOutputStream = null;
 
             try {
-                serverSocket = new ServerSocket(SocketServerPORT);
+                serverSocket = new ServerSocket(SocketServerPort);
                 MainActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        serverport.setText(String.valueOf(serverSocket.getLocalPort()));
+                        String ip = getIpAddress();
+                        serverinfo.setText(ip.replace("\n","") + ":" + String.valueOf(serverSocket.getLocalPort()));
                     }
                 });
 
@@ -131,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            clientip.setText(clientIpStatus.replace("/", ""));
-                            clientport.setText(clientPortStatus);
+                            clientinfo.setText(clientIpStatus.replace("/", "") + ":" + clientPortStatus);
                             msg.append(message);
                         }
                     });
@@ -144,14 +140,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                final String errMsg = e.toString();
-                MainActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        clientport.setText(errMsg);
-                    }
-                });
 
             } finally {
                 if (socket != null) {
